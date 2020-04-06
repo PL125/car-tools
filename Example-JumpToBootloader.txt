@@ -1,0 +1,120 @@
+-JumpToBootloader
+maerz 2020
+ b'60002800c8'
+ b'60002800c8'
+ b'03002800c8'
+ repeat  b'0200322ee0'
+b'0667111d45e614aa'
+SeedVal: 0x1d45e614 type: <class 'numpy.int32'>
+SeedValAnswer: 0x611d3fc8 type: <class 'numpy.uint32'>
+Bl Seed Security Access OK
+ UDS_RequestDownload DataPayload Size: 0xa
+UDS_TransferData DataPayload Size: 0x600
+ repeat   repeat   repeat   repeat   repeat   repeat   repeat   repeat   repeat   repeat   repeat   repeat   repeat   repeat   repeat   repeat   repeat   repeat   repeat   repeat   repeat   repeat   repeat   repeat   repeat   repeat   repeat   repeat   repeat   repeat   repeat   repeat   repeat   repeat   repeat   repeat   repeat   repeat   repeat   repeat   repeat   repeat   repeat   repeat   repeat   repeat   repeat   repeat  CtrlPayload Size: 0x89
+ repeat  UDS_RequestDownload DataPayload Size: 0xa
+UDS_TransferData DataPayload Size: 0x60
+ repeat  CtrlPayload Size: 0x89
+ repeat UDS_Receive requestCorrectlyReceived-ResponsePending retry recv ... Timeout
+b'670119085d470000'
+BlSeed2Val: 0x19085d47
+ebx_10: 0xcbbb0ff9 type: <class 'int'>
+loop run: 0
+
+SeedVal: 0xc type: <class 'int'>
+SeedVal: 0xc type: <class 'int'>
+ebx_0: 0x68aafe6
+EBX[+4]: 0xb
+EBX[+8]: 0xb
+Work: 0xd155 0xb
+Work: 0x8fea7 0xb
+ebx_c: 0x693ae8d 0xb
+ebx_10: 0xd24ebe86
+edx bzw. dl = 0x18
+loop run: 1
+
+SeedVal: 0xd2 type: <class 'int'>
+SeedVal: 0x2 type: <class 'int'>
+ebx_0: 0xc1b02f0e
+EBX[+4]: 0x4
+EBX[+8]: 0xe
+Work: 0xc1b02f0 0x4
+Work: 0xa97a2920 0xe
+ebx_c: 0x6b2a582e 0xe
+ebx_10: 0x3d7916b4
+edx bzw. dl = 0x14
+loop run: 2
+
+SeedVal: 0x3d7 type: <class 'int'>
+SeedVal: 0x7 type: <class 'int'>
+ebx_0: 0x9775deae
+EBX[+4]: 0x9
+EBX[+8]: 0x1
+Work: 0x4bbaef 0x9
+Work: 0x4bbaef 0x1
+ebx_c: 0x97c1999d 0x1
+ebx_10: 0xd53ab051
+edx bzw. dl = 0x10
+loop run: 3
+
+SeedVal: 0xd53a type: <class 'int'>
+SeedVal: 0xa type: <class 'int'>
+ebx_0: 0x27c51066
+EBX[+4]: 0xb
+EBX[+8]: 0x0
+Work: 0x4f8a2 0xb
+Work: 0x0 0x0
+ebx_c: 0x27c51066 0x0
+ebx_10: 0xfcffc0b7
+edx bzw. dl = 0xc
+loop run: 4
+
+SeedVal: 0xfcffc type: <class 'int'>
+SeedVal: 0xc type: <class 'int'>
+ebx_0: 0x68aafe6
+EBX[+4]: 0x0
+EBX[+8]: 0xb
+Work: 0x68aafe6 0x0
+Work: 0x47f58ee2 0xb
+ebx_c: 0x4e803ec8 0xb
+ebx_10: 0x4b7fff7f
+edx bzw. dl = 0x8
+loop run: 5
+
+SeedVal: 0x4b7fff type: <class 'int'>
+SeedVal: 0xf type: <class 'int'>
+ebx_0: 0x9dfec0aa
+EBX[+4]: 0x7
+EBX[+8]: 0xf
+Work: 0x13bfd81 0x7
+Work: 0x1283da8f 0xf
+ebx_c: 0xb0829b39 0xf
+ebx_10: 0xfc029ab8
+edx bzw. dl = 0x4
+End Loop
+
+0xd24ebe86
+0x3d7916b4
+0xd53ab051
+0xfcffc0b7
+0x4b7fff7f
+0xfc029ab8
+Work: 0xb
+ebx_0: 0xcf49f556
+ebx_8: 0xf
+ebx_4: 0x8
+ebx_c: 0xdb6f4ab1
+ebx_10: 0xd771e569
+ebx_0: 0x799a6042
+ebx_8: 0xd
+ebx_4: 0x7
+Work: 0x3ccd3
+ebx_c: 0x79b4fa07
+Work: 0xc9a98b83
+Work: 0xa11b70ec
+Work_edx: 0x2547
+Work_ecx: 0x8b3f
+Work_edx: 0x1446b979
+SeedAnswer: 0xb55dc995
+BlSeed2Answer: 0xb55dc995
+b'6702b55dc9950000'
+bytearray(b'c\x80\x00\x00\xff\x03\xff\xff')
