@@ -8,6 +8,8 @@
 # -- Initial commit
 # -- Works for me, code is very unsorted
 # -- Is only working with my Test Cluster a VDD-02417.01.1719012300
+# 08 April 2020
+# -- CAN1 and bus1 removed
 ####################################################
 
 # prequisites:
@@ -843,7 +845,7 @@ def send_one():
 
     # Using specific buses works similar:
     bus = can.interface.Bus(bustype='socketcan', channel='can0', bitrate=500000)
-    bus1 = can.interface.Bus(bustype='socketcan', channel='can1', bitrate=500000)
+    #bus1 = can.interface.Bus(bustype='socketcan', channel='can1', bitrate=500000)
     
     try:
         if len(sys.argv) > 1:
@@ -855,32 +857,32 @@ def send_one():
                 print("Acc CP VCRN: " +str(codecs.encode( bytearray(TmpData[2:]) ,'hex') ))
                 return
  
-            if (sys.argv[1]) == "-CPSniff":
-                while True:
-                    recv_message = bus1.recv(30.0) # 2 s Timeout
-                    if(recv_message.arbitration_id==0x3DB):
-                        print (recv_message)
-                        
-            if (sys.argv[1]) == "-CPSimu":
-                bus1.send(can.Message(arbitration_id=0x3DB,data=[0x10, 0x0B, 0x80, 0x01, 0x00, 0x01, 0x02, 0x03],is_extended_id=False))
-                while True:
-                    recv_message = bus1.recv(2.0)
-                    if recv_message.arbitration_id ==0x3EB:
-                        break
-                print (recv_message)
-                bus1.send(can.Message(arbitration_id=0x3DB,data=[0x21, 0x04, 0x05, 0x06, 0x07, 0x00, 0xAA, 0xAA],is_extended_id=False))
-                while True:
-                    recv_message = bus1.recv(2.0)
-                    if recv_message.arbitration_id ==0x3EB:
-                        break
-                print (recv_message)
-                bus1.send(can.Message(arbitration_id=0x3DB,data=[0x30, 0x0F, 0x05, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA],is_extended_id=False))
-                while True:
-                    recv_message = bus1.recv(2.0)
-                    if recv_message.arbitration_id ==0x3EB:
-                        break
-                print (recv_message)
-                return
+#            if (sys.argv[1]) == "-CPSniff":
+#                while True:
+#                    recv_message = bus1.recv(30.0) # 2 s Timeout
+#                    if(recv_message.arbitration_id==0x3DB):
+#                        print (recv_message)
+#                        
+#            if (sys.argv[1]) == "-CPSimu":
+#                bus1.send(can.Message(arbitration_id=0x3DB,data=[0x10, 0x0B, 0x80, 0x01, 0x00, 0x01, 0x02, 0x03],is_extended_id=False))
+#                while True:
+#                    recv_message = bus1.recv(2.0)
+#                    if recv_message.arbitration_id ==0x3EB:
+#                        break
+#                print (recv_message)
+#                bus1.send(can.Message(arbitration_id=0x3DB,data=[0x21, 0x04, 0x05, 0x06, 0x07, 0x00, 0xAA, 0xAA],is_extended_id=False))
+#                while True:
+#                    recv_message = bus1.recv(2.0)
+#                    if recv_message.arbitration_id ==0x3EB:
+#                        break
+#                print (recv_message)
+#                bus1.send(can.Message(arbitration_id=0x3DB,data=[0x30, 0x0F, 0x05, 0xAA, 0xAA, 0xAA, 0xAA, 0xAA],is_extended_id=False))
+#                while True:
+#                    recv_message = bus1.recv(2.0)
+#                    if recv_message.arbitration_id ==0x3EB:
+#                        break
+#                print (recv_message)
+#                return
             
             if (sys.argv[1]) == "-FindCanIds":
                 for CanID in range (0x700,0x7FF):
@@ -1218,29 +1220,29 @@ def send_one():
                 DataReceived3DB=bytearray()
                 RecID3EB=0
                 DataReceived3EB=bytearray()                
-                while True:
-                    recv_message = bus1.recv(30.0) # 2 s Timeout
-                    if(recv_message.arbitration_id==0x3DB):
-                      if(recv_message.data[0] != 0x30): # ACk Frsames interessieren nicht
-                        RecID3DB=RecID3DB+1
-                        DataReceived3DB = DataReceived3DB + recv_message.data
-                        if RecID3DB==2:
-                            RecID3DB=0
-                            del DataReceived3DB[8]
-                            del DataReceived3DB[0]
-                            print("Tacho==>ACC: "+str( codecs.encode( bytearray(DataReceived3DB[:3]) ,'hex'))+ " "+str( codecs.encode( bytearray(DataReceived3DB[3:11]) ,'hex'))+" "+hex(DataReceived3DB[11]))
-                            DataReceived3DB=bytearray()
-                            
-                    if(recv_message.arbitration_id==0x3EB): 
-                      if(recv_message.data[0] != 0x30): # ACk Frsames interessieren nicht
-                        RecID3EB=RecID3EB+1
-                        DataReceived3EB = DataReceived3EB + recv_message.data
-                        if RecID3EB==2:
-                            RecID3EB=0
-                            del DataReceived3EB[8]
-                            del DataReceived3EB[0]
-                            print("ACC==>Tacho: "+str( codecs.encode( bytearray(DataReceived3EB[:3]) ,'hex'))+ " "+str( codecs.encode( bytearray(DataReceived3EB[3:11]) ,'hex'))+" "+hex(DataReceived3EB[11]))
-                            DataReceived3EB=bytearray()
+#                while True:
+#                    recv_message = bus1.recv(30.0) # 2 s Timeout
+#                    if(recv_message.arbitration_id==0x3DB):
+#                      if(recv_message.data[0] != 0x30): # ACk Frsames interessieren nicht
+#                        RecID3DB=RecID3DB+1
+#                        DataReceived3DB = DataReceived3DB + recv_message.data
+#                        if RecID3DB==2:
+#                            RecID3DB=0
+#                            del DataReceived3DB[8]
+#                            del DataReceived3DB[0]
+#                            print("Tacho==>ACC: "+str( codecs.encode( bytearray(DataReceived3DB[:3]) ,'hex'))+ " "+str( codecs.encode( bytearray(DataReceived3DB[3:11]) ,'hex'))+" "+hex(DataReceived3DB[11]))
+#                            DataReceived3DB=bytearray()
+#                            
+#                    if(recv_message.arbitration_id==0x3EB): 
+#                      if(recv_message.data[0] != 0x30): # ACk Frsames interessieren nicht
+#                        RecID3EB=RecID3EB+1
+#                        DataReceived3EB = DataReceived3EB + recv_message.data
+#                        if RecID3EB==2:
+#                            RecID3EB=0
+#                            del DataReceived3EB[8]
+#                            del DataReceived3EB[0]
+#                            print("ACC==>Tacho: "+str( codecs.encode( bytearray(DataReceived3EB[:3]) ,'hex'))+ " "+str( codecs.encode( bytearray(DataReceived3EB[3:11]) ,'hex'))+" "+hex(DataReceived3EB[11]))
+#                            DataReceived3EB=bytearray()
 
         if len(sys.argv) > 1:
             if (sys.argv[1]) == "-TachoDumpIdentifiers":
