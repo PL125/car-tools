@@ -14,6 +14,8 @@
 #    Bootloader SecurityAccess SA2 algo from Bootloader added, with some SA2 Keys
 #    -JumpToBootloader till SA2 should now work on most PQ Clusters
 #    But Download Payload only works on some 
+# 11 May 2021
+#    Add MQB Klemme 15 on CAN Message for Robert
 ####################################################
 
 # prequisites:
@@ -935,6 +937,21 @@ def send_one():
     try:
         if len(sys.argv) > 1:
             print (sys.argv[1])
+
+            if (sys.argv[1]) == "-MQB_Klemme_15_On":
+             print("Send MQB_Klemme_15_On all 100 ms forever")
+             i=0
+             while(True):
+              i=i+1
+              if i==16: i=0
+              WorkingFrame = [0x00,i,0x03,0x00]
+              msg = can.Message(arbitration_id=0x3C0,data=WorkingFrame,is_extended_id=False)
+              bus.send(msg)
+              sleep(0.1)
+
+             sys.exit(0)
+
+
             if (sys.argv[1]) == "-ACCStatus":
                 TmpData = UDS_ReadDataByIdentifier(bus,0x757,0x03DE)
                 print("Acc CP Error Counter: " +str(codecs.encode( bytearray(TmpData[2:4]) ,'hex') ))
