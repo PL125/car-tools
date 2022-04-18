@@ -1,0 +1,7 @@
+                         MK60EC1
+0x81 OBD/EOBD Mode        [ ]						 
+0x83 EOL VW               [x]
+0x84 EOL ECU manufacturer [ ]
+0x85 Flashmode            [x]
+0x86 Engineer Mode        [x]
+0x89 Standard             [x]
